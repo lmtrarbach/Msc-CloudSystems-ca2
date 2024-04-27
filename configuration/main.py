@@ -51,6 +51,7 @@ def setup_topology():
     host4 = net.addHost("host4")
     host5 = net.addHost("host5")
 
+    net.addLink(s1, s2)
     net.addLink(host1, s1)
     net.addLink(host2, s1)
     net.addLink(host3, s2)
