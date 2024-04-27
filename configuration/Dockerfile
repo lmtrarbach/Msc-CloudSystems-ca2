@@ -17,7 +17,7 @@ RUN apt-get update -y \
     sudo
 RUN pip install mininet
 RUN touch /etc/network/interfaces 
-RUN service openvswitch-switch start
+RUN sudo service openvswitch-switch start
 
 
 CMD ["sudo","python3", "main.py"]
