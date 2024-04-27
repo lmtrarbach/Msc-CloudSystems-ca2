@@ -15,7 +15,7 @@ def test_network_resilience(net):
     s1.config(loss=100)
     s2.config(loss=100)
 
-    info("Shpuld fail\n")
+    info("Should fail\n")
     net.pingAll()
 
     s1.config(loss=0)
@@ -39,18 +39,18 @@ def setup_topology():
     )
     s1 = net.addSwitch("s1")
     s2 = net.addSwitch("s2")
-    host1 = net.addHost("host1")
-    host2 = net.addHost("host2")
-    host3 = net.addHost("host3")
-    host4 = net.addHost("host4")
-    host5 = net.addHost("host5")
+    h1 = net.addHost("h1")
+    h2 = net.addHost("h2")
+    h3 = net.addHost("h3")
+    h4 = net.addHost("h4")
+    h5 = net.addHost("h5")
 
-    net.addLink(host1, s1)
-    net.addLink(host2, s1)
-    net.addLink(host3, s1)
-    net.addLink(host3, s2)
-    net.addLink(host4, s2)
-    net.addLink(host5, s2)
+    net.addLink(h1, s1)
+    net.addLink(h2, s1)
+    net.addLink(h3, s1)
+    net.addLink(h3, s2)
+    net.addLink(h4, s2)
+    net.addLink(h5, s2)
 
     net.start()
 
