@@ -67,15 +67,14 @@ def setup_topology():
     h4 = net.addHost("h4")
     h5 = net.addHost("h5")
 
-    net.addLink(h1, s1)
-    net.addLink(h2, s1)
-    net.addLink(h3, s1)
-    net.addLink(h3, s2)
-    net.addLink(h4, s2)
-    net.addLink(h5, s2)
+    net.addLink(h1, s1, port1=1)
+    net.addLink(h2, s1, port1=2)
+    net.addLink(h3, s1, port1=3)
+    net.addLink(h3, s2, port1=1)
+    net.addLink(h4, s2, port1=2)
+    net.addLink(h5, s2, port1=3)
 
     net.start()
-
 
     # Test
     test_network_resilience(net)
@@ -85,6 +84,7 @@ def setup_topology():
 
     # Stop network
     net.stop()
+
 
 
 if __name__ == "__main__":
