@@ -9,11 +9,11 @@ import time
 
 def test_network_resilience(net):
     info("Testing - Should all pass\n")
+    host4 = net.get("host4")
     # Testing with all working setup
     for each in range(1, 6):
         if each != 4:
-            to_host = net.get("host{each}")
-            result = net.get("host{each}").cmd(f"ping -c 2 host4")
+            result = net.get("host{each}").cmd(f"ping -c 2 {host4}")
             if " 0% packet loss" in result:
                 info(f"Connectivity between host4 and host{each} is successful")
             else:
@@ -24,20 +24,11 @@ def test_network_resilience(net):
     info("Testing - Should fail")
     for each in range(1, 6):
         if each != 4:
-            to_host = net.get("host{each}")
-            result = net.get("host{each}").cmd(f"ping -c 2 host4")
+            result = net.get("host{each}").cmd(f"ping -c 2 {host4}")
             if " 0% packet loss" in result:
                 info(f"Connectivity between host4 and host{each} is successful")
             else:
                 info(f"Connectivity between host4 and host{each} failed")
-
-    # Reset iptables rules
-    net.get("host4").cmd("iptables -D OUTPUT -s 10.0.0.1 -d 10.0.0.2 -j DROP")
-    net.get("host2").cmd("iptables -D OUTPUT -s 10.0.0.2 -d 10.0.0.1 -j DROP")
-
-    # Reset connectivity
-    info("Testing - Should all pass again")
-    net.pingAll()
 
 
 def setup_topology():
