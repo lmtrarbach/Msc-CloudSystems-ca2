@@ -8,27 +8,15 @@ import time
 
 
 def test_network_resilience(net):
-    info("Testing - Should all pass\n")
-    host4 = net.get("host4")
-    # Testing with all working setup
-    for each in range(1, 6):
-        if each != 4:
-            result = net.get(f"host{each}").cmd(f"ping -c 2 {host4}")
-            if " 0% packet loss" in result:
-                info(f"Connectivity between host4 and host{each} is successful \n")
-            else:
-                info(f"Connectivity between host4 and host{each} failed \n")
+    info("Should pass \n")
+    s1, s2 = net.get('s1'), net.get('s2')
+    net.pingAll()
+    
+    s1.s2_intf1.config(loss=100)
+    s2.s1_intf2.config(loss=100)
 
-    net.get("host4").cmd("iptables -A INPUT -j DROP")
-
-    info("Testing - Should fail")
-    for each in range(1, 6):
-        if each != 4:
-            result = net.get(f"host{each}").cmd(f"ping -c 2 {host4}")
-            if " 0% packet loss" in result:
-                info(f"Connectivity between host4 and host{each} is successful \n")
-            else:
-                info(f"Connectivity between host4 and host{each} failed \n")
+    info("Shpuld fail\n")
+    net.pingAll()
 
 
 def setup_topology():
@@ -47,6 +35,7 @@ def setup_topology():
         waitConnected=True,
     )
     s1 = net.addSwitch("s1")
+    s2 = net.addSwitch("s2")
     host1 = net.addHost("host1")
     host2 = net.addHost("host2")
     host3 = net.addHost("host3")
@@ -56,14 +45,12 @@ def setup_topology():
     net.addLink(host1, s1)
     net.addLink(host2, s1)
     net.addLink(host3, s1)
-    net.addLink(host4, s1)
-    net.addLink(host4, s1)
-    net.addLink(host5, s1)
+    net.addLink(host3, s2)
+    net.addLink(host4, s2)
+    net.addLink(host5, s2)
 
     net.start()
 
-    # Connect host4 directly to both switches
-    net.addLink(host4, s1)
 
     # Test
     test_network_resilience(net)
