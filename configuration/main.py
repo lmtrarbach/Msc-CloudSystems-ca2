@@ -6,6 +6,23 @@ from mininet.cli import CLI
 from mininet.log import setLogLevel, info
 import time
 
+def test_network_resilience(net):
+    info("Testing - Should all pass")
+    # Testing with all working setup
+    net.pingAll()
+    # Drop connection between host1 and host2
+    net.get('h1').cmd('iptables -A OUTPUT -s 10.0.0.1 -d 10.0.0.2 -j DROP')
+    net.get('h2').cmd('iptables -A OUTPUT -s 10.0.0.2 -d 10.0.0.1 -j DROP')
+
+    # Test connectivity after dropping 
+    info("Testing - Should fail")
+    net.pingAll()
+
+    # Restore connections
+    net.get('h1').cmd('iptables -D OUTPUT -s 10.0.0.1 -d 10.0.0.2 -j DROP')
+    net.get('h2').cmd('iptables -D OUTPUT -s 10.0.0.2 -d 10.0.0.1 -j DROP')
+
+
 def setup_topology():
     floodlight_ip = "172.18.0.2"
     floodlight_port = 6653
@@ -24,12 +41,7 @@ def setup_topology():
     net.start()
 
     # Test 
-    info("Testing connectivity...\n")
-    net.pingAll()
-
-    # Interact with Floodlight
-    info("\n\nInteracting with Floodlight controller...\n")
-    print(s1)
+    test_network_resilience(net)
 
 
     # Start CLI
