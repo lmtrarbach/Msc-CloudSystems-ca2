@@ -12,14 +12,14 @@ def test_network_resilience(net):
     s1, s2 = net.get('s1'), net.get('s2')
     net.pingAll()
 
-    s1.s2_intf1.config(loss=100)
-    s2.s1_intf2.config(loss=100)
+    s1.config(loss=100)
+    s2.config(loss=100)
 
     info("Shpuld fail\n")
     net.pingAll()
 
-    s1.s2_intf1.config(loss=0)
-    s2.s1_intf2.config(loss=0)
+    s1.config(loss=0)
+    s2.config(loss=0)
 
 
 def setup_topology():
