@@ -14,28 +14,32 @@ def test_network_resilience(net):
     h4 = net.hosts[3]
     h5 = net.hosts[4]
 
-    info("Should pass \n")
-    info(f"Testing h3 as master with ip {h3.IP()}  and h1,h2,h3,h4,h5 as nodes \n")
+    # Should pass
+    info("Should pass\n")
+    info(f"Testing h3 as master with IP {h3.IP()} and h1, h2, h3, h4, h5 as nodes\n")
+    net.get('h3').cmd(f"python3 -m http.server 80 &") 
+    for host in [h1, h2, h3, h4, h5]:
+        result = host.cmd(f"curl -s -k http://{h3.IP()}")
+        if "200 OK" in result:
+            info(f"Connectivity to {host.name} from h3 is successful\n")
+        else:
+            info(f"Connectivity to {host.name} from h3 failed\n")
+
+    # Configure loss between switches
     s1, s2 = net.get('s1'), net.get('s2')
-    net.get('h3').cmd(f"python3 -m http.server 80")
-    net.get('h1').cmd(f"curl -k http://{h3.IP()}")
-    net.get('h2').cmd(f"curl -k http://{h3.IP()}")
-    net.get('h3').cmd(f"curl -k http://{h3.IP()}")
-    net.get('h4').cmd(f"curl -k http://{h3.IP()}")
-    net.get('h5').cmd(f"curl -k http://{h3.IP()}")
-
-
     s1.config(loss=100)
     s2.config(loss=100)
 
+    # Should fail
     info("Should fail\n")
-    net.get('h3').cmd(f"python3 -m http.server 80")
-    net.get('h1').cmd(f"curl -k http://{h3.IP()}")
-    net.get('h2').cmd(f"curl -k http://{h3.IP()}")
-    net.get('h3').cmd(f"curl -k http://{h3.IP()}")
-    net.get('h4').cmd(f"curl -k http://{h3.IP()}")
-    net.get('h5').cmd(f"curl -k http://{h3.IP()}")
+    for host in [h1, h2, h3, h4, h5]:
+        result = host.cmd(f"curl -s -k http://{h3.IP()}")
+        if "200 OK" in result:
+            info(f"Connectivity to {host.name} from h3 is successful after loss configuration\n")
+        else:
+            info(f"Connectivity to {host.name} from h3 failed after loss configuration\n")
 
+    # Reset loss configuration
     s1.config(loss=0)
     s2.config(loss=0)
 
