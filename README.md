@@ -20,63 +20,6 @@
 ## <a name="_hr3opdz0gzd9"></a>Module: 2024\_CACA687I
 
 
-
-
-
-
-
-
-
-
-# <a name="_la808ctp6n09"></a>**Appendix I: Student Declaration of Academic Integrity**
-** 
-
-Students may be required to submit work for assessment in a variety of means, for example physical submission or electronic submission as per the lecturer’s instructions. In all cases students must make a declaration of academic integrity, either by physically completing such a declaration and submitting it with their assignment or engaging appropriately with the electronic version of the declaration. Assignments submitted such that the form has not been included, or the electronic equivalent has been circumvented, will not be accepted.
-
-
-# <a name="_qneaeewyk5pg"></a>**Declaration**
-** 
-
-|**Name:**|Luthiano Trarbach|
-| :- | :- |
-|**Student ID number(s)**|Luthiano  : 23273521|
-|**Programme**|MSc in Blockchain|
-|**Module Code**|CA687I Cloud Systems|
-|**Assignment Title**|ASSIGNMENT 2 :SDN|
-|**Submission Date**|April  28<sup>th</sup> / 2024|
-**
-
-**
-
-
-I understand that the University regards breaches of academic integrity and plagiarism as grave and serious.
-
-
-
-I have read and understood the DCU Academic Integrity and Plagiarism Policy. I accept the penalties that may be imposed should I engage in practice or practices that breach this policy.
-
-
-
-I have identified and included the source of all facts, ideas, opinions and viewpoints of others in the assignment references. Direct quotations, paraphrasing, discussion of ideas from books, journal articles, internet sources, module text, or any other source whatsoever are acknowledged and the sources cited are identified in the assignment references.
-
-
-
-I declare that this material, which I now submit for assessment, is entirely my own work and has not been taken from the work of others save and to the extent that such work has been cited and acknowledged within the text of my work.
-
-
-
-I have used the DCU library referencing guidelines (available at https://www4.dcu.ie/library/classes\_and\_tutorials/citingreferencing.shtml **and/or** the appropriate referencing system recommended in the assignment guidelines and/or programme documentation.
-
-
-
-By signing this form or by submitting material online I confirm that this assignment, or any part of it, has not been previously submitted by me or any other person for assessment on this or any other course of study.
-
-By signing this form or by submitting material for assessment online I confirm that I have read and understood the DCU Academic Integrity and Plagiarism Policy (available at[ ](http://www.dcu.ie/registry/examinations/index.shtml)<http://www.dcu.ie/registry/examinations/index.shtml>).
-
-
-
-
-
 # <a name="_uq948t9s405"></a>Scenario:
 
 Leverage SDN configuration to test network and node distribution impacts on decentralized systems. Create a simulation of network partitions to test the reliability of distributed algorithms.
@@ -148,9 +91,9 @@ To delete the bridges:
 `	`ovs-vsctl  del-br
 ## <a name="_g4jt6dtijppt"></a>Conclusions:
 
-The mininet and floodlight are interesting SDN applications to test decentralized networks, we could use the solution to emulate the Blockchain network's consensus algorithms network partition tolerance and scalability. The main issue faced here is the lack of support for the libraries which often has issues in libraries and a lack of documentation. That is of course an issue on open source that is our responsibility to support and provide resources. Also, a possible idea is also implement genomic algorithms to improve the networks using crossover mutations on the best setups.
+The mininet and floodlight are interesting SDN applications to test decentralized networks, we could use the solution to emulate the Blockchain network's consensus algorithms network partition tolerance and scalability. The main issue faced here is the lack of support for the libraries which often has issues in libraries and a lack of documentation. That is of course an issue on open source that is our responsibility to support and provide resources. Also, a possible idea is implement genomic algorithms to improve the networks using crossover mutations on the best setups.
 
-It’s important to note that even do I did my best to create a reproducible environment I reached my self in many situations were I lost complete access to the machines that I had worked. 
+It’s important to note that even do I did my best to create a reproducible environment I reached myself in many situations where I lost complete access to the machines that I had worked. 
 
 
 ## <a name="_cyplw0bu16si"></a>Bibliography and resources:
