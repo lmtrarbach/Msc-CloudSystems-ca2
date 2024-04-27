@@ -17,7 +17,8 @@ RUN apt-get update -y \
     sudo
 
 RUN pip install mininet
+RUN tocuh /etc/network/interfaces
 RUN /usr/share/openvswitch/scripts/ovs-ctl start
-RUN ovs-vsctl show
+
 
 CMD ["sudo","python3", "main.py"]
