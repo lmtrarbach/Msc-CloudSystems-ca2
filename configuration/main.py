@@ -73,7 +73,6 @@ def setup_topology():
 
     # Connect host4 directly to both switches
     net.addLink(host4, s1)
-    net.addLink(host4, s2)
 
     # Test
     test_network_resilience(net)
