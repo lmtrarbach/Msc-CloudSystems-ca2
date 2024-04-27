@@ -8,17 +8,19 @@ import time
 
 
 def test_network_resilience(net):
+    h1 = net.hosts[0]
+    h3 = net.hosts[2]
     info("Should pass \n")
     s1, s2 = net.get('s1'), net.get('s2')
     net.get('h3').cmd(f"python3 socket_server.py")
-    net.get('h1').cmd(f"python3 socket_client.py {net.h3.IP()}")
+    net.get('h1').cmd(f"python3 socket_client.py {h3.IP()}")
 
     s1.config(loss=100)
     s2.config(loss=100)
 
     info("Should fail\n")
     net.get('h3').cmd(f"python3 socket_server.py")
-    net.get('h1').cmd(f"python3 socket_client.py {net.h3.IP()}")
+    net.get('h1').cmd(f"python3 socket_client.py {h3.IP()}")
 
     s1.config(loss=0)
     s2.config(loss=0)
