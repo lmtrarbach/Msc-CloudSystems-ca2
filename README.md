@@ -15,9 +15,7 @@
 
 
 ## <a name="_aoq6c35mydf0"></a><a name="_ccl46tr0sbto"></a><a name="_jl66rsn36a7a"></a><a name="_z6sbi9yltomt"></a>Name: Luthiano Trarbach
-## <a name="_x81ee7vq0295"></a>Student ID: 23273521 
 ## <a name="_m2n60j7eh9fe"></a>Email: luthiano.trarbach2@mail.dcu.ie 
-## <a name="_wenhf8t66ot9"></a>Address: Hazelgrove, First Sea Rd, Sligo. 
 ## <a name="_cycr9i41b037"></a>Course: MSc in Blockchain - Distributed Ledger Technologies 
 ## <a name="_hr3opdz0gzd9"></a>Module: 2024\_CACA687I
 
