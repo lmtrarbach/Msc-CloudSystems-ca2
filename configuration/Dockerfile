@@ -18,7 +18,6 @@ RUN apt-get update -y \
 
 RUN pip install mininet
 RUN touch /etc/network/interfaces
-RUN /usr/share/openvswitch/scripts/ovs-ctl start
 
 
 CMD ["sudo","python3", "main.py"]
