@@ -15,7 +15,7 @@ def test_network_resilience(net):
     h5 = net.hosts[4]
 
     info("Should pass \n")
-    info(f"Testing h3 as master with ip {h3.IP()}  and h1 as node with ip  {h1.IP()} \n")
+    info(f"Testing h3 as master with ip {h3.IP()}  and h1,h2,h3,h4,h5 as nodes \n")
     s1, s2 = net.get('s1'), net.get('s2')
     net.get('h3').cmd(f"python3 -m http.server 80")
     net.get('h1').cmd(f"curl -k http://{h3.IP()}")
