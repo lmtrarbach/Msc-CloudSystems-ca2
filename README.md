@@ -19,7 +19,6 @@
 ## <a name="_m2n60j7eh9fe"></a>Email: luthiano.trarbach2@mail.dcu.ie 
 ## <a name="_wenhf8t66ot9"></a>Address: Hazelgrove, First Sea Rd, Sligo. 
 ## <a name="_cycr9i41b037"></a>Course: MSc in Blockchain - Distributed Ledger Technologies 
-## <a name="_v216uq53v9id"></a>World count: 2494
 ## <a name="_hr3opdz0gzd9"></a>Module: 2024\_CACA687I
 
 
