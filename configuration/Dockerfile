@@ -14,7 +14,8 @@ RUN apt-get update -y \
     openvswitch-testcontroller \
     python3-pip \
     mininet \
-    sudo
+    sudo \
+    curl
 RUN pip install mininet
 RUN touch /etc/network/interfaces 
 RUN sudo service openvswitch-switch start

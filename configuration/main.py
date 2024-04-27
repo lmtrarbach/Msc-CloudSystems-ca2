@@ -14,15 +14,15 @@ def test_network_resilience(net):
     info("Should pass \n")
     info(f"Testing h3 as master with ip {h3.IP()}  and h1 as node with ip  {h1.IP()} \n")
     s1, s2 = net.get('s1'), net.get('s2')
-    net.get('h3').cmd(f"python3 socket_server.py")
-    net.get('h1').cmd(f"python3 socket_client.py {h3.IP()}")
+    net.get('h3').cmd(f"python3 -m http.server 80")
+    net.get('h1').cmd(f"curl -k http://{h3.IP()}")
 
     s1.config(loss=100)
     s2.config(loss=100)
 
     info("Should fail\n")
-    net.get('h3').cmd(f"python3 socket_server.py")
-    net.get('h1').cmd(f"python3 socket_client.py {h3.IP()}")
+    net.get('h3').cmd(f"python3 -m http.server 80")
+    net.get('h1').cmd(f"curl -k http://{h3.IP()}")
 
     s1.config(loss=0)
     s2.config(loss=0)
