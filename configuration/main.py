@@ -11,16 +11,16 @@ def test_network_resilience(net):
     # Testing with all working setup
     net.pingAll()
     # Drop connection between host1 and host2
-    net.get('h1').cmd('iptables -A OUTPUT -s 10.0.0.1 -d 10.0.0.2 -j DROP')
-    net.get('h2').cmd('iptables -A OUTPUT -s 10.0.0.2 -d 10.0.0.1 -j DROP')
+    net.get('host4').cmd('iptables -A OUTPUT -s 10.0.0.1 -d 10.0.0.2 -j DROP')
+    net.get('host2').cmd('iptables -A OUTPUT -s 10.0.0.2 -d 10.0.0.1 -j DROP')
 
     # Test connectivity after dropping 
     info("Testing - Should fail")
     net.pingAll()
 
     # Restore connections
-    net.get('h1').cmd('iptables -D OUTPUT -s 10.0.0.1 -d 10.0.0.2 -j DROP')
-    net.get('h2').cmd('iptables -D OUTPUT -s 10.0.0.2 -d 10.0.0.1 -j DROP')
+    net.get('host4').cmd('iptables -D OUTPUT -s 10.0.0.1 -d 10.0.0.2 -j DROP')
+    net.get('host2').cmd('iptables -D OUTPUT -s 10.0.0.2 -d 10.0.0.1 -j DROP')
 
 
 def setup_topology():
@@ -32,11 +32,19 @@ def setup_topology():
     time.sleep(1)
     net.addController(controller=RemoteController,switch=OVSSwitch, link=TCLink, ip=floodlight_ip, port=floodlight_port, waitConnected=True)
     s1 = net.addSwitch('s1')
-    h1 = net.addHost('h1')
-    h2 = net.addHost('h2')
+    s2 = net.addSwitch('s2')
+    host1 = net.addHost('host1')
+    host2 = net.addHost('host2')
+    host3 = net.addHost('host3')
+    host4 = net.addHost('host4')
+    host5 = net.addHost('host5')
 
-    net.addLink(h1, s1)
-    net.addLink(h2, s1)
+    net.addLink(host1, s1)
+    net.addLink(host2, s1)
+    net.addLink(host3, s2)
+    net.addLink(host4, s1)
+    net.addLink(host4, s2)
+    net.addLink(host5, s2)
 
     net.start()
 
