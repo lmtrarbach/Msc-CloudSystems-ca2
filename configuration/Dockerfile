@@ -15,10 +15,10 @@ RUN apt-get update -y \
     python3-pip \
     mininet \
     sudo
-
 RUN pip install mininet
 RUN touch /etc/network/interfaces 
-RUN systemctl start openvswitch
+RUN service openvswitch-switch start
+RUN ovs-vsctl set-manager ptcp:6640
 
 
 CMD ["sudo","python3", "main.py"]
