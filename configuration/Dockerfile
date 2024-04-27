@@ -1,7 +1,7 @@
 FROM ubuntu:20.04
 USER root
 WORKDIR /app
-COPY main.py /app/main.py
+COPY *.py /app/
 RUN apt-get update -y \
     && apt-get install -y --no-install-recommends \
     openvswitch-common \
