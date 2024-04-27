@@ -1,0 +1,32 @@
+version: '3'
+
+services:
+  floodlight_controller:
+    image: latarc/floodlight
+    restart: always
+    networks:
+      sdnet_docker:
+        ipv4_address: 172.18.0.2
+
+  mininet:
+    cap_add:
+      - CAP_SYS_ADMIN
+      - SYS_MODULE
+      - NET_ADMIN
+      - SYS_NICE
+    build: configuration
+    privileged: true
+    networks:
+      sdnet_docker:
+    environment:
+      FLOODLIGHT_IP: "172.18.0.2"
+      FLOODLIGHT_PORT: "6653" 
+    depends_on:
+      - floodlight_controller
+
+networks:
+  sdnet_docker:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.18.0.0/16
