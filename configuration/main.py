@@ -29,14 +29,8 @@ def setup_topology():
 
     # Interact with Floodlight
     info("\n\nInteracting with Floodlight controller...\n")
-    switches = net.controllers[0].switches
-    for switch in switches:
-        info(f"Switch {switch.dpid}\n")
-        for port in switch.ports:
-            info(f"Port {port.number} is {port.name}\n")
-    hosts = net.controllers[0].hosts
-    for host in hosts:
-        info(f"Host {host.ip}\n")
+    print(s1)
+
 
     # Start CLI
     CLI(net)
