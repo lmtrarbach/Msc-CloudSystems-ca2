@@ -8,7 +8,7 @@ import time
 
 def setup_topology():
     floodlight_ip = "172.18.0.2"
-    floodlight_port = 6653
+    floodlight_port = 6644
 
     net = Mininet(controller=RemoteController)
     print(f'Starting mininet with IP: {floodlight_ip} and port: {floodlight_port}')
