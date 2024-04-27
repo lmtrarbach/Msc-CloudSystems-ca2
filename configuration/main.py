@@ -15,9 +15,9 @@ def test_network_resilience(net):
         if each != 4:
             result = net.get(f"host{each}").cmd(f"ping -c 2 {host4}")
             if " 0% packet loss" in result:
-                info(f"Connectivity between host4 and host{each} is successful")
+                info(f"Connectivity between host4 and host{each} is successful \n")
             else:
-                info(f"Connectivity between host4 and host{each} failed")
+                info(f"Connectivity between host4 and host{each} failed \n")
 
     net.get("host4").cmd("iptables -A INPUT -j DROP")
 
@@ -26,9 +26,9 @@ def test_network_resilience(net):
         if each != 4:
             result = net.get(f"host{each}").cmd(f"ping -c 2 {host4}")
             if " 0% packet loss" in result:
-                info(f"Connectivity between host4 and host{each} is successful")
+                info(f"Connectivity between host4 and host{each} is successful \n")
             else:
-                info(f"Connectivity between host4 and host{each} failed")
+                info(f"Connectivity between host4 and host{each} failed \n")
 
 
 def setup_topology():
