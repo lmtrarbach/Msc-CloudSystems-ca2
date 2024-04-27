@@ -10,7 +10,9 @@ import time
 def test_network_resilience(net):
     h1 = net.hosts[0]
     h3 = net.hosts[2]
+
     info("Should pass \n")
+    info(f"Testing h3 as master with ip {h3.IP()}  and h1 as node with ip  {h1.IP()} \n")
     s1, s2 = net.get('s1'), net.get('s2')
     net.get('h3').cmd(f"python3 socket_server.py")
     net.get('h1').cmd(f"python3 socket_client.py {h3.IP()}")
