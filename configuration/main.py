@@ -73,7 +73,8 @@ def setup_topology():
     net.addLink(h3, s2, port1=1)
     net.addLink(h4, s2, port1=2)
     net.addLink(h5, s2, port1=3)
-
+    s1.cmd("ifconfig s1-tap0 10.0.10.1 netmask 255.255.255.0")
+    s2.cmd("ifconfig s2-tap1 10.0.20.1 netmask 255.255.255.0")
     net.start()
 
     # Test
