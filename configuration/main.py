@@ -13,7 +13,7 @@ def test_network_resilience(net):
     # Testing with all working setup
     for each in range(1, 6):
         if each != 4:
-            result = net.get("host{each}").cmd(f"ping -c 2 {host4}")
+            result = net.get(f"host{each}").cmd(f"ping -c 2 {host4}")
             if " 0% packet loss" in result:
                 info(f"Connectivity between host4 and host{each} is successful")
             else:
@@ -24,7 +24,7 @@ def test_network_resilience(net):
     info("Testing - Should fail")
     for each in range(1, 6):
         if each != 4:
-            result = net.get("host{each}").cmd(f"ping -c 2 {host4}")
+            result = net.get(f"host{each}").cmd(f"ping -c 2 {host4}")
             if " 0% packet loss" in result:
                 info(f"Connectivity between host4 and host{each} is successful")
             else:
